@@ -1,0 +1,436 @@
+@import "./variables";
+@import "./_mixins";
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+// @mixin inputLabelBtn {
+//     padding: 0.5rem;
+//     font-size: 2rem;
+//     border: none;
+//     background: white;
+// }
+.App {
+    text-align: center;
+}
+
+* {
+    font-family: 'Questrial', sans-serif;
+}
+h1 {
+    text-transform: capitalize;    
+}
+.container-page {
+    position: relative;
+    top: 90px;
+    background-image: url('./assets/container_bg.png');
+    padding: 10px
+}
+
+.search-container {
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: $primaryBtn;
+    width: 90%;
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 0 10px;
+    input,
+    button,
+    label {
+        @include inputLabelBtn()
+    }
+    input {
+        width: 100%;
+        &:focus {
+            outline: 0;
+        }
+    }
+}
+
+nav {
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 90px;
+    background: $menuBG;
+    width: 100%;
+    z-index: 10;
+    h3 {
+        margin-left: 15px;
+        font-size: 20px;
+        line-height: 20px;
+    }
+}
+
+.menu-btn {
+    background: $primaryBtn;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.nav-links {
+    top: 90px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: $textColor;
+    list-style-type: none;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    height: 90vh;
+    z-index: 5;
+    overflow: hidden;
+    a {
+        text-decoration: none;
+        color: white
+    }
+    li {
+        padding: 10px 0 15px;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+.next-prev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        background: $menuBG;
+        padding: 10px 20px;
+        color: #fff
+    }
+    button {
+        padding: 6px;
+        border: 0;
+        background-color: $primaryBtn;
+        font-size: 24px;
+        color: #fff;
+        &:focus {
+            outline: 0;
+        }
+        &:disabled {
+            opacity: 0;
+        }
+    }
+}
+
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    li {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        padding: 10px 0;
+        margin: 0.5%;
+        list-style-type: none;
+        background: $boxBG;
+        width: 9%;
+        z-index: 1;
+        border-bottom: 7px solid transparent;
+        &:hover {
+            background: $boxHover;
+            border-bottom: 7px solid $primaryBtn;
+            cursor: pointer;
+        }
+    }
+    p {
+        text-transform: capitalize;
+    }
+    a {
+        text-decoration: none;
+        color: $menuBG
+    }
+}
+
+.pokemon-header {
+    padding: 10px;
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        text-transform: capitalize;
+        @include paddingMargin(0)
+    }
+    p {
+        @include paddingMargin(0)
+    }
+    img {
+        // width: 100%;
+        max-width: 350px;
+        background: $boxBG;
+        border-radius: 50%;
+        border: 5px solid $boxBG
+    }
+}
+
+.stats {
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+    margin: 10px;
+}
+
+.stats-info {
+    background: #30a7d7;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: flex-end;
+    color: $boxBG;
+    label {
+        font-size: 110%;
+        font-weight: 700;
+    }
+    p {
+        padding: 0 20px 0 5px;
+        font-size: 125%;
+        text-transform: capitalize;
+    }
+    span {
+        padding: 5px;
+        margin: 0 5px;
+        border-radius: 5px;
+        text-transform: capitalize;
+    }
+}
+
+.stats-box {
+    background: $boxHover;
+    border-radius: 10px;
+    padding: 15px;
+    list-style-type: none;
+    li {
+        background: linear-gradient(110deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 81%, rgba(0, 0, 0, 1) 81%, rgba(0, 0, 0, 1) 100%);
+        margin: 5px 0;
+        padding: 7px 15px;
+        border-radius: 22px;
+        text-transform: capitalize;
+        display: flex;
+        justify-content: space-between;
+        font-size: 120%;
+        transition: all 0.3s;
+        span {
+            color: $boxBG
+        }
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+}
+
+.navPokemon {
+    display: flex;
+    justify-content: center;
+    background: $boxBG;
+    .btnNavPokemon {      
+        background: $dragon2;
+        background: linear-gradient(180deg, $dragon2 0%, $dragon2 45%, $dark2 45%, $dark2 55%, $light 55%, $light 100%);
+        height:40px;
+        width: 40px;
+        border-radius:25px;
+        margin: 0 10px;
+        position: relative;
+        border:3px solid $dark2;
+        svg{
+            background: $light;
+            border:3px solid $dark2;
+            border-radius:15px;
+            position: absolute;
+            margin: auto;
+            top:0;bottom: 0;left: 0;right: 0;
+        }
+        &:hover{
+            animation: spinn 0.4s forwards;
+          
+        }
+    }
+}
+.fadeAnimation{
+    opacity: 0;
+    animation: fade-effect 0.5s forwards;
+}
+
+@keyframes fade-effect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes spinn {
+    from {transform: rotate(0);}
+    to {transform: rotate(360deg);}
+}
+@media screen and (max-width: 1100px) {
+    .pokemon-list {
+        li {
+            width: 19%;
+        }
+    }
+}
+
+.gallery{
+    background: red;
+    display: flex;
+    h2{
+        width: 100%;
+        background-color: blue;
+    }
+}
+/*
+@mixin bgType($value) {
+    background-color: $value;
+}
+
+@mixin bgType2($value1, $value2...) {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, $value1 50%, $value2 50%);
+}
+*/
+
+@media screen and (max-width: 800px) {
+    .pokemon-header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding:0
+    }
+    .pokemon-list {
+        li {
+            width: 49%;
+        }
+    }
+    form label {
+        display: none;
+    }
+    .stats,
+    .stats-info,
+    .stats-box{
+    width: 93%; 
+    margin:10px 0
+    }
+    .stats-info{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        label {
+            font-size: 110%;
+            font-weight: 700;        
+        }     
+        p{
+            margin: 5px 0 10px;
+            padding:0
+        }
+        span {
+            margin: 10px 10px 0 0;            
+        }
+    }
+}
+
+.normal {
+    background-color: $normal;
+    color: $dark
+}
+
+.fighting {
+    background-color: $fighting;
+    color: $dark
+}
+
+.poison {
+    background-color: $poison;
+    color: $dark
+}
+
+.rock {
+    background-color: $rock;
+    color: $dark
+}
+
+.bug {
+    background-color: $bug;
+    color: $light
+}
+
+.ghost {
+    background-color: $ghost;
+    color: $light
+}
+
+.steel {
+    background-color: $steel;
+    color: $dark
+}
+
+.fire {
+    background-color: $fire;
+    color: $dark
+}
+
+.water {
+    background-color: $water;
+    color: $light
+}
+
+.grass {
+    background-color: $grass;
+    color: $dark
+}
+
+.electric {
+    background-color: $electric;
+    color: $dark
+}
+
+.psychic {
+    background-color: $psychic;
+    color: $dark
+}
+
+.ice {
+    background-color: $ice;
+    color: $light
+}
+
+.dark {
+    background-color: $dark;
+    color: $light
+}
+
+.fairy {
+    background-color: $fairy;
+    color: $dark
+}
+
+// .unknown {
+// background-color:;	
+// }
+// .shadow {
+// background-color:;	
+// }
+.dragon {
+    @include bgType2($dragon1,
+    $dragon2);
+    color: $dark
+}
+
+.ground {
+    @include bgType2($ground1,
+    $ground2);
+    color: $dark
+}
+
+.flying {
+    @include bgType2($flying1,
+    $flying2);
+    color: $dark
+}
